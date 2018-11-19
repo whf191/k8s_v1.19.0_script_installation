@@ -101,7 +101,7 @@ install_kubeadm_docker
 pull_docker
 
 change_kubelet_config
-install_network_add-on
+
 
 install_finish
 }
