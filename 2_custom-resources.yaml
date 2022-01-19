@@ -1,0 +1,22 @@
+# This section includes base Calico installation configuration.
+# For more information, see: https://docs.projectcalico.org/v3.16/reference/installation/api#operator.tigera.io/v1.Installation
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  # Configures Calico networking.
+  calicoNetwork:
+    # Note: The ipPools section cannot be modified post-install.
+    ipPools:
+    - blockSize: 26
+      cidr: 10.168.28.0/22
+      #模式选择EncapsulationType是在IP池上使用的封装类型。有效选项包括：IPIP，VXLAN，IPIPCrossSubnet，VXLANCrossSubnet
+      #vxlanMode值为Never是关闭,ipipMode是Always是隧道模式,支持云垮网段通信
+      #ipip模式是tun网卡模式,可以尝试encapsulation指设置为IPIP观察下vxlanMode是不是关闭,ipipMode是不是打开
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
+      #以下两个是参数是打开ipip模式关闭vxlan模式;kubectl -n kube-system edit  ippool  default-ipv4-ippool
+      #ipipMode: Always
+      #vxlanMode: Never           

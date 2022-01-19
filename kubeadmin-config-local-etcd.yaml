@@ -1,0 +1,43 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+bootstrapTokens:
+- groups:
+  - system:bootstrappers:kubeadm:default-node-token
+  token: abcdef.0123456789abcdef
+  ttl: 8760h0m0s
+  usages:
+  - signing
+  - authentication
+kind: InitConfiguration
+localAPIEndpoint:
+  #此处修改master节点任意ip
+  advertiseAddress: 172.17.22.10
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  name: y-k8s-master
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+---
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.aliyuncs.com/google_containers
+kind: ClusterConfiguration
+kubernetesVersion: v1.19.0
+networking:
+  dnsDomain: cluster.local
+  #此处按需求修改
+  serviceSubnet: 172.17.60.0/22
+  podSubnet: 172.17.80.0/22
+scheduler: {}
+#此处负载设置，无就设置为master节点任意，也可以设置为域名
+controlPlaneEndpoint: "172.17.22.10:6443"
