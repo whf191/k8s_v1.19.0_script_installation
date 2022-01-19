@@ -73,10 +73,10 @@ disable_swap
 kubeadmin_install
 docker_json
 
-#1.°´ĞèÇóĞŞ¸Äkubeadmin-config-local-etcd.yamlµÄ×¢ÊÍ²¿·Ö
+#1.æŒ‰éœ€æ±‚ä¿®æ”¹kubeadmin-config-local-etcd.yamlçš„æ³¨é‡Šéƒ¨åˆ†
 #
-#2.½Å±¾ÔËĞĞ½áÊø£¬ÊÖ¶¯ÔËĞĞ´ËÃüÁî,³õÊ¼»¯k8s¼¯Èº
+#2.è„šæœ¬è¿è¡Œç»“æŸï¼Œæ‰‹åŠ¨è¿è¡Œæ­¤å‘½ä»¤,åˆå§‹åŒ–k8sé›†ç¾¤
 #  kubeadm  init --config=2kubeadmin-config.yaml  --upload-certs
-#3.³õÊ¼³É¹¦ºó
+#3.åˆå§‹æˆåŠŸå,åˆå§‹åŒ–Calicoç½‘ç»œ
 #  kubectl apply -f kubeadmin-config-local-etcd.yaml
-#  kubectl apply -f 2_custom-resources.yaml  #´Ë´¦ĞŞ¸ÄcidrµÄip×ÓÍøÒªºÍµÚÒ»²½µÄpodSubnet×ÓÍøÏàÍ¬
+#  kubectl apply -f 2_custom-resources.yaml  #æ­¤å¤„ä¿®æ”¹cidrçš„ipå­ç½‘è¦å’Œç¬¬ä¸€æ­¥çš„podSubnetå­ç½‘ç›¸åŒ
