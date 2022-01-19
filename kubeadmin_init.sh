@@ -73,6 +73,7 @@ disable_swap
 kubeadmin_install
 docker_json
 ###
+#k8sv1.19.0脚本安装，仅需两步完成全部安装,注意注释部分的提示，按需求修改
 #第一步环境初始化
 #1.脚本运行环境centos7
 #2.默认运行此脚本会安装k8s v1.19.0相关依赖，包含docker,kubeadmin
@@ -85,6 +86,6 @@ docker_json
 #2.脚本运行结束，手动运行此命令,初始化k8s集群
 #  kubeadm  init --config=2kubeadmin-config.yaml  --upload-certs
 #3.初始成功后,初始化Calico网络
-#  kubectl apply -f kubeadmin-config-local-etcd.yaml
+#  kubectl apply -f 1_tigera-operator.yaml
 #  kubectl apply -f 2_custom-resources.yaml  #此处修改cidr的ip子网要和第一步的podSubnet子网相同
 ###
